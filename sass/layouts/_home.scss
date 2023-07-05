@@ -1,0 +1,50 @@
+@use "../abstracts" as *;
+
+.hero {
+  &-img {
+    height: clamp(15rem, 80vw, 29rem);
+    position: relative;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      top: 0;
+      transform: translateX(25%);
+      scale: 1.4;
+      height: 100%;
+      object-fit: contain;
+      max-height: 25rem;
+      max-width: 85%;
+    }
+  }
+  &-text {
+    --flow-spacer: 1.5rem;
+    text-align: center;
+  }
+  @include mq(medium) {
+    max-width: var(--max-width);
+    margin-inline: auto;
+    margin-block: 6em;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+
+    &-img {
+      height: auto;
+      position: relative;
+      overflow: visible;
+      grid-column: 6/-1;
+      grid-row: 1;
+      & img {
+        transform: translateX(30%);
+      }
+
+      & + * {
+        grid-column: 1/7;
+        grid-row: 1;
+      }
+    }
+
+    &-text {
+      text-align: left;
+    }
+  }
+}

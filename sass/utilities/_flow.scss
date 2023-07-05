@@ -1,0 +1,7 @@
+.flow > * + * {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+.flow-padding > * + * {
+  padding-block: var(--flow-spacer, 1rem);
+}

@@ -1,0 +1,45 @@
+@use "../abstracts" as *;
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  border-radius: 100vmax;
+  padding: 0.75em 1.5em;
+  line-height: 1;
+  background-color: var(--clr-primary-500);
+  color: var(--clr-neutral-100);
+
+  &[data-type="inverted"] {
+    background-color: transparent;
+    color: var(--clr-neutral-500);
+    @include navigation-mq() {
+      & {
+        color: var(--clr-neutral-100);
+      }
+    }
+    &:where(:hover, :focus, :focus-visible, :focus-within) {
+      color: var(--clr-primary-500);
+    }
+  }
+
+  &[type="submit"],
+  &[data-type="copy"] {
+    border-radius: 0.5rem;
+    padding: 1em 1.5em;
+    width: 100%;
+  }
+  &[data-type="copy"].copied {
+    content: "Copied";
+    background-color: var(--clr-accent-900);
+  }
+  &:where(:hover, :focus, :focus-visible, :focus-within) {
+    background-color: var(--clr-primary-200);
+  }
+  @include navigation-mq() {
+    .nav-wrapper .button {
+      display: none;
+    }
+  }
+}

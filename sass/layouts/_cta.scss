@@ -1,0 +1,19 @@
+@use "../abstracts/" as *;
+
+.cta {
+  background-color: var(--clr-accent-900);
+  background-image: url(../../images/bg-boost-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-block: 4em;
+  color: var(--clr-neutral-100);
+  text-align: center;
+  h2 {
+    color: inherit;
+  }
+
+  @include mq(medium) {
+    background-image: url(../../images/bg-boost-desktop.svg);
+    padding-block: 3em;
+  }
+}

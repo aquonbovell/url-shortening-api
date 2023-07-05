@@ -1,0 +1,90 @@
+@use "../abstracts/" as *;
+
+footer {
+  background: var(--clr-neutral-900);
+}
+
+.footer {
+  &-wrapper {
+    padding-block: 3rem;
+    text-align: center;
+
+    .logo {
+      padding-bottom: 2rem;
+      display: inline-block;
+    }
+    .secondary-navigation span {
+      display: inline-block;
+      font-weight: 700;
+      padding-block: 1rem;
+      color: var(--clr-neutral-100);
+      &:not(:first-of-type) {
+        margin-top: 1rem;
+      }
+    }
+
+    .nav-sub-list {
+      display: block;
+      li {
+        margin-inline: auto;
+        line-height: 1;
+        padding-block: 0.5rem;
+        text-align: center;
+      }
+      a {
+        color: var(--clr-neutral-500);
+      }
+    }
+
+    .social-links {
+      margin-top: 2rem;
+      display: inline-flex;
+      gap: 1.75rem;
+    }
+  }
+
+  @include mq(medium) {
+    &-wrapper {
+      display: grid;
+      grid-template-columns: minmax(5rem, 15rem) 1fr 10rem;
+      gap: 1rem;
+      .logo {
+        align-self: self-start;
+        padding-bottom: 0;
+      }
+      .secondary-navigation {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+        span {
+          padding-block: 0 0.5em;
+        }
+        text-align: left;
+      }
+
+      .nav-sub-list li {
+        text-align: left;
+      }
+
+      .social-links {
+        margin-top: 0;
+        align-self: self-start;
+      }
+    }
+  }
+}
+
+.attribution {
+  margin-inline: auto;
+  width: calc(100% - calc(1.5rem * 2));
+  max-width: var(--max-width);
+  text-align: center;
+  color: var(--clr-neutral-100);
+  padding-bottom: 2rem;
+  a {
+    color: var(--clr-primary-500);
+
+    &:where(:hover, :focus, :focus-visible, :focus-within) {
+      color: var(--clr-secondary-500);
+    }
+  }
+}

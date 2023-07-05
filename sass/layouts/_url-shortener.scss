@@ -1,0 +1,101 @@
+@use "../abstracts/" as *;
+
+.url-shortener {
+  background-image: linear-gradient(
+    var(--clr-neutral-100) 50%,
+    var(--clr-neutral-200) 50%
+  );
+}
+
+.url-input-container {
+  width: 100%;
+}
+
+.url-input {
+  --flow-spacer: 1.25rem;
+  background-color: var(--clr-accent-900);
+  border-radius: 0.5rem;
+  padding: 1.5em;
+  transition-property: padding-bottom;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  background-image: url(../../images/bg-shorten-mobile.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  @include mq(medium) {
+    background-image: url(../../images/bg-shorten-desktop.svg);
+    .button[type="submit"] {
+      max-width: max-content;
+      align-self: center;
+    }
+  }
+
+  & input {
+    margin-bottom: 0em;
+    transition: margin-bottom 250ms ease;
+  }
+  &.error input {
+    margin-bottom: 1.5em;
+  }
+
+  @include mq(medium) {
+    display: flex;
+    --flow-spacer: 0;
+    gap: 1.5rem;
+    justify-content: space-between;
+    position: relative;
+    &.error {
+      padding-bottom: 2.5em;
+    }
+  }
+
+  & input {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    border: 0;
+
+    &:focus {
+      outline-offset: 5px;
+    }
+
+    &:invalid,
+    &[aria-invalid="true"] {
+      border: 5px solid orange;
+      outline-offset: 2px;
+
+      &:not(:focus, :focus-visible, :focus-within) {
+        border: 5px solid var(--clr-secondary-500);
+        &::placeholder {
+          color: var(--clr-secondary-500);
+        }
+        & + label {
+          font-style: italic;
+          position: absolute;
+          color: var(--clr-secondary-500);
+          height: 2rem;
+          transform: translateY(-1em);
+          opacity: 1;
+          overflow: visible;
+        }
+      }
+    }
+
+    &:valid {
+      border: 5px solid green;
+      outline-offset: 2px;
+    }
+
+    &::placeholder {
+      color: var(--clr-neutral-600);
+    }
+
+    & + label {
+      display: block;
+      height: 1px;
+      transform: translateY(-2rem);
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+}
